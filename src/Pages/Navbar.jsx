@@ -23,6 +23,7 @@ import {
     Bars2Icon,
     HomeIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 // profile menu component
 const profileMenuItems = [
@@ -83,8 +84,8 @@ function ProfileMenu() {
                             key={label}
                             onClick={closeMenu}
                             className={`flex items-center gap-2 rounded ${isLastItem
-                                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                                    : ""
+                                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                                : ""
                                 }`}
                         >
                             {React.createElement(icon, {
@@ -114,39 +115,43 @@ const navListItems = [
     {
         label: "Home",
         icon: HomeIcon,
+        navLinked: "",
     },
     {
         label: "Biodatas",
         icon: UserCircleIcon,
+        navLinked: "biodata"
     },
     {
         label: "About Us",
         icon: CubeTransparentIcon,
+        navLinked: "about"
     },
     {
         label: "Contact Us",
         icon: CodeBracketSquareIcon,
+        navLinked: "contact"
     },
 ];
 
 function NavList() {
     return (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-            
-            {navListItems.map(({ label, icon }) => (
-                <Typography
+
+            {navListItems.map(({ navLinked, label, icon }) => (
+                <Link
                     key={label}
                     as="a"
-                    href="#"
                     variant="small"
+                    to={`/${navLinked}`}
                     color="gray"
-                    className="font-medium text-blue-gray-500"
+                    className="font-medium text-blue-gray-500 nav-link"
                 >
                     <MenuItem className="flex items-center gap-2 lg:rounded-full">
                         {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
                         <span className="text-gray-900"> {label}</span>
                     </MenuItem>
-                </Typography>
+                </Link>
             ))}
         </ul>
     );
@@ -165,12 +170,12 @@ export default function ComplexNavbar() {
     }, []);
 
     return (
-        <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6">
+        <Navbar className="lg:rounded-full lg:pl-6">
             <div className="relative mx-auto flex items-center justify-between text-blue-gray-900">
                 <img className="w-10" src="https://i.ibb.co/XsnWyyL/image.png" alt="" />
                 <Typography
                     as="a"
-                    href="#"
+                    href="/"
                     className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
                 >
                     Eternal Matches
