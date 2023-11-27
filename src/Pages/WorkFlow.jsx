@@ -5,8 +5,8 @@ const WorkFlow = () => {
     const [activeStep, setActiveStep] = React.useState(0);
 
     return (
-        <div className="w-full py-4 px-8">
-            <h2 className="text-3xl my-6 font-bold text-center">Discover, Connect, Love: Your Steps on Eternal Matches</h2>
+        <div className="w-full py-4 px-8 my-16">
+            <h3 className="text-5xl py-6 font-bold text-center">Discover, Connect, Love: Your Steps on Eternal Matches</h3>
             <CardHeader floated={false} variant="gradient" color="gray" className="grid h-24 m-0 place-items-center">
                 <div className="w-full px-20 pt-4 pb-8">
                     <Stepper
