@@ -6,6 +6,7 @@ import Login from "../Auth/Login";
 import Dashboard from "../Pages/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute"
 import About from "../Pages/About";
+import Contact from "../Pages/Contact";
 
 const Router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const Router = createBrowserRouter([
             {
                 path: "/about",
                 element: <About></About>
+            },
+            {
+                path: "/contact",
+                element: <Contact></Contact>
             }
         ]
     }

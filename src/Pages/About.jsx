@@ -1,6 +1,6 @@
 const About = () => {
     return (
-        <div className="my-16">
+        <div className="my-5">
             <h3 className="text-5xl font-bold text-center py-4">Welcome to EternalMatches</h3>
             <p>At EternalMatches, we believe in the power of love to transform lives. Our platform is more than just a place to find a life partner; it&apos;s a journey towards lasting connections, shared dreams, and eternal happiness.</p>
 
