@@ -23,8 +23,7 @@ const Login = () => {
         const password = e.target.password.value
 
         signInUser(email, password)
-            .then(result => {
-                console.log(result.user);
+            .then( () => {
                 toast("Logged In Successfully!");
                 e.target.reset()
                 navigate('/')
@@ -38,13 +37,9 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-            .then(result => {
-                console.log(result.user)
+            .then( () => {
                 toast("Logged In Successfully!");
                 navigate('/')
-            })
-            .catch(error => {
-                console.log(error);
             })
     }
 
