@@ -11,11 +11,12 @@ import Register from "../Auth/Register";
 import EditBiodata from "../Pages/EditBiodata";
 import ViewBiodata from "../Pages/ViewBiodata";
 import BiodatasPage from "../Pages/BiodatasPage";
+import BiodataDetails from "../Pages/BiodataDetails";
 
 const Router = createBrowserRouter([
     {
         path: "/",
-        element:<Root></Root>,
+        element: <Root></Root>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
@@ -55,6 +56,11 @@ const Router = createBrowserRouter([
             {
                 path: "/biodatas",
                 element: <BiodatasPage></BiodatasPage>,
+                loader: () => fetch('http://localhost:5000/biodatas')
+            },
+            {
+                path: "/biodata/:id",
+                element: <BiodataDetails></BiodataDetails>,
                 loader: () => fetch('http://localhost:5000/biodatas')
             }
         ]

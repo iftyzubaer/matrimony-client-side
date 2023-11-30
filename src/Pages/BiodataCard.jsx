@@ -4,9 +4,9 @@ import {
     CardHeader,
     CardBody,
     CardFooter,
-    Typography,
-    Button,
+    Typography
 } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 
 const BiodataCard = ({ biodatas }) => {
     return (
@@ -31,7 +31,7 @@ const BiodataCard = ({ biodatas }) => {
                     </Typography>
                 </CardBody>
                 <CardFooter className="pt-0">
-                    <Button>View Profile</Button>
+                    <Link className="bg-black text-white p-3 w-full rounded-lg mt-4 hover:bg-gray-800" to={`/biodata/${biodatas._id}`}>View Profile</Link>
                 </CardFooter>
             </Card>
         </div>
