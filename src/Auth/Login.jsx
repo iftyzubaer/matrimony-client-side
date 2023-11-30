@@ -95,9 +95,7 @@ const Login = () => {
                             }
                             containerProps={{ className: "-ml-2.5" }}
                         />
-                        <Button className="mt-6" fullWidth>
-                            Login
-                        </Button>
+                        <input type="submit" value={"Login"} className="mt-6 bg-black text-white p-3 w-full rounded-lg hover:bg-gray-800" fullWidth />
                         <Button onClick={handleGoogleSignIn} className="mt-6" fullWidth>Google</Button>
                         <Typography color="gray" className="mt-4 text-center font-normal">
                             New Here?{" "}

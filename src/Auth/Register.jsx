@@ -7,7 +7,6 @@ import {
     Card,
     Input,
     Checkbox,
-    Button,
     Typography,
 } from "@material-tailwind/react";
 
@@ -38,6 +37,9 @@ const Register = () => {
             .then( () => {
                 toast("Account Created Successfully!");
                 navigate('/')
+            })
+            .error(res => {
+                console.log(res);
             })
     }
 
@@ -121,9 +123,7 @@ const Register = () => {
                             }
                             containerProps={{ className: "-ml-2.5" }}
                         />
-                        <Button className="mt-6" fullWidth>
-                            Register
-                        </Button>
+                        <input type="submit" value={"Register"} className="mt-6 bg-black text-white p-3 w-full rounded-lg hover:bg-gray-800" />
                         <Typography color="gray" className="mt-4 text-center font-normal">
                             Already has account??{" "}
                             <Link to={"/login"} className="font-medium text-gray-900">

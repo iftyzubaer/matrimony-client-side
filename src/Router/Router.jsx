@@ -12,6 +12,8 @@ import EditBiodata from "../Pages/EditBiodata";
 import ViewBiodata from "../Pages/ViewBiodata";
 import BiodatasPage from "../Pages/BiodatasPage";
 import BiodataDetails from "../Pages/BiodataDetails";
+import FavouriteBiodata from "../Pages/favouriteBiodata";
+import Chekout from "../Pages/Chekout";
 
 const Router = createBrowserRouter([
     {
@@ -38,6 +40,11 @@ const Router = createBrowserRouter([
                     {
                         path: "/dashboard/viewBiodata",
                         element: <PrivateRoute><ViewBiodata></ViewBiodata></PrivateRoute>
+                    },
+                    {
+                        path: "/dashboard/favoritesBiodata",
+                        element: <PrivateRoute><FavouriteBiodata></FavouriteBiodata></PrivateRoute>,
+                        loader: () => fetch('http://localhost:5000/favourites')
                     }
                 ]
             },
@@ -62,6 +69,10 @@ const Router = createBrowserRouter([
                 path: "/biodata/:_id",
                 element: <BiodataDetails></BiodataDetails>,
                 loader: () => fetch('http://localhost:5000/biodatas')
+            },
+            {
+                path: "/checkout",
+                element: <Chekout></Chekout>
             }
         ]
     }

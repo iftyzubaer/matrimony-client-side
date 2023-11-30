@@ -1,7 +1,7 @@
 
 import { Button } from "@material-tailwind/react";
 import { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../AuthProvider/AuthProvider";
@@ -53,6 +53,7 @@ const BiodataDetails = () => {
             <p className="font-semibold pt-4 text-lg">Phone Number: {findBiodata.phoneNumber}</p> */}
 
             <Button onClick={handleAddToFavourites}>Add to Favourites</Button>
+            <Link className="bg-black text-white p-3 w-full rounded-lg mt-4 hover:bg-gray-800" to={'/checkout'}>Request Contact</Link>
             <ToastContainer />
         </div>
     );

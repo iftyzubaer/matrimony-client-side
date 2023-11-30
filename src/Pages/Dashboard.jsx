@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Button } from '@material-tailwind/react';
 import { ToastContainer, toast } from "react-toastify";
@@ -13,11 +13,28 @@ import {
 const Dashboard = () => {
 
     const [open, setOpen] = React.useState(false);
+    const [adminData, setAdminData] = useState()
+    const [loading, setLoading] = useState(true)
 
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
 
     const { user, logOut } = useContext(AuthContext)
+
+    useEffect(() => {
+        fetch('http://localhost:5000/admin')
+            .then(response => response.json())
+            .then(data => {
+                setAdminData(data)
+                setLoading(false)
+            })
+    }, [])
+
+    console.log(adminData);
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
 
     const handleLogOut = () => {
         logOut()
