@@ -59,7 +59,7 @@ const Router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/biodatas')
             },
             {
-                path: "/biodata/:id",
+                path: "/biodata/:_id",
                 element: <BiodataDetails></BiodataDetails>,
                 loader: () => fetch('http://localhost:5000/biodatas')
             }
