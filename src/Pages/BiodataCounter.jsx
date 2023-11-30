@@ -6,25 +6,23 @@ const formatter = (value) => <CountUp end={value} separator="," />;
 const BiodataCounter = () => {
 
     const [data, setData] = useState([])
-    const [groom, setGroom] = useState([])
+    const [loading, setLoading] = useState(true)
+    const gender = "Male";
 
     useEffect(() => {
         fetch('http://localhost:5000/biodatas')
             .then(response => response.json())
             .then(data => {
                 setData(data)
+                setLoading(false)
             })
     }, [])
 
-    console.log(data);
+    if (loading) {
+        return <p>Loading...</p>
+    }
 
-    const gender = "male";
-
-    useEffect(() => {
-        const findMale = data.find(biodata => biodata.gender == gender)
-        setGroom(findMale)
-    }, [gender, data])
-
+    const findMale = data && data.filter(biodata => biodata.gender == gender)
 
     return (
         <div className='text-2xl my-16'>
@@ -34,10 +32,10 @@ const BiodataCounter = () => {
                     <Statistic title="Total Candidates" value={data.length} formatter={formatter} />
                 </Col>
                 <Col span={6}>
-                    <Statistic title="Groom Candidates" value={6} precision={2} formatter={formatter} />
+                    <Statistic title="Groom Candidates" value={findMale.length} precision={2} formatter={formatter} />
                 </Col>
                 <Col span={6}>
-                    <Statistic title="Bride Candidate" value={4} precision={3} formatter={formatter} />
+                    <Statistic title="Bride Candidate" value={data.length-findMale.length} precision={3} formatter={formatter} />
                 </Col>
                 <Col span={6}>
                     <Statistic title="Marriage Completed" value={2} precision={4} formatter={formatter} />

@@ -181,10 +181,6 @@ const ViewBiodata = () => {
         { "value": "Sylhet", "label": "Sylhet" }
     ]
 
-    console.log(userBiodata);
-
-    
-
     return (
         <div className="ml-5">
             <form className="mt-8 mb-2 max-w-80 m-auto sm:w-96">
