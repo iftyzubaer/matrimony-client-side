@@ -9,6 +9,7 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Register from "../Auth/Register";
 import EditBiodata from "../Pages/EditBiodata";
+import ViewBiodata from "../Pages/ViewBiodata";
 
 const Router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const Router = createBrowserRouter([
                     {
                         path: "/dashboard/editBiodata",
                         element: <PrivateRoute><EditBiodata></EditBiodata></PrivateRoute>
+                    },
+                    {
+                        path: "/dashboard/viewBiodata",
+                        element: <PrivateRoute><ViewBiodata></ViewBiodata></PrivateRoute>
                     }
                 ]
             },

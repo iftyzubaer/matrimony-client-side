@@ -106,7 +106,7 @@ export default function ComplexNavbar() {
 
                 {
                     user ?
-                        <Link to={"/dashboard"}><Button>Dashboard</Button></Link> :
+                        <Link to={"/dashboard/viewBiodata"}><Button>Dashboard</Button></Link> :
                         <NavLink to={"/login"}>
                             <Button size="sm" variant="text">
                                 <span>Log In</span>

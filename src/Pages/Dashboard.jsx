@@ -5,8 +5,17 @@ import { Button } from '@material-tailwind/react';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, Outlet } from 'react-router-dom';
+import React from "react";
+import {
+    Drawer,
+} from "@material-tailwind/react";
 
 const Dashboard = () => {
+
+    const [open, setOpen] = React.useState(false);
+
+    const openDrawer = () => setOpen(true);
+    const closeDrawer = () => setOpen(false);
 
     const { user, logOut } = useContext(AuthContext)
 
@@ -17,18 +26,23 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div className='flex my-6'>
+            <div className='flex flex-col md:flex-row my-6'>
                 <div>
                     <h3 className='text-3xl mb-5'>{user.displayName}</h3>
-                    <div className='flex flex-col gap-3 pr-5 border-r-2 border-black'>
-                        <Link to={"/dashboard/editBiodata"}><Button>Edit Biodata</Button></Link>
-                        <Link to={"/dashboard/viewBiodata"}><Button>View Biodata</Button></Link>
-                        <Link to={"/dashboard/contactRequest"}><Button>My Contact Request</Button></Link>
-                        <Link to={"/dashboard/favoritesBiodata"}><Button>Favorites Biodata</Button></Link>
-                        <Button onClick={handleLogOut}>Log Out</Button>
-                    </div>
+                    <React.Fragment>
+                        <Button onClick={openDrawer}>Open Drawer</Button>
+                        <Drawer open={open} onClose={closeDrawer} className="p-4">
+                            <div className='flex flex-col gap-3'>
+                                <Link to={"/dashboard/editBiodata"}><Button>Edit Biodata</Button></Link>
+                                <Link to={"/dashboard/viewBiodata"}><Button>View Biodata</Button></Link>
+                                <Link to={"/dashboard/contactRequest"}><Button>My Contact Request</Button></Link>
+                                <Link to={"/dashboard/favoritesBiodata"}><Button>Favorites Biodata</Button></Link>
+                                <Link><Button onClick={handleLogOut}>Log Out</Button></Link>
+                            </div>
+                        </Drawer>
+                    </React.Fragment>
                 </div>
-                <div>
+                <div className='flex-1'>
                     <Outlet></Outlet>
                 </div>
             </div>
