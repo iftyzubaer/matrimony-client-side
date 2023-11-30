@@ -177,12 +177,12 @@ const EditBiodata = () => {
         const weight = form.weight.value
         const age = form.age.value
         const occupation = form.occupation.value
-        const race = form.gender.value
+        const race = form.race.value
         const fatherName = form.fatherName.value
         const motherName = form.motherName.value
         const permanentDivision = form.permanentDivision.value
         const presentDivision = form.presentDivision.value
-        const partnerAge = form.gender.value
+        const partnerAge = form.age.value
         const partnerHeight = form.partnerHeight.value
         const partnerWeight = form.partnerWeight.value
         const email = form.email.value

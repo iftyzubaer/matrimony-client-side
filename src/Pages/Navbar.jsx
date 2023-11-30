@@ -27,7 +27,7 @@ const navListItems = [
     {
         label: "Biodatas",
         icon: UserCircleIcon,
-        navLinked: "biodata"
+        navLinked: "biodatas"
     },
     {
         label: "About Us",

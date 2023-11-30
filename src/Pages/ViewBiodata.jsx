@@ -2,13 +2,26 @@ import {
     Input,
     Typography,
 } from "@material-tailwind/react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Select from 'react-select'
 
 const ViewBiodata = () => {
 
     const { user } = useContext(AuthContext)
+    const [userBiodatas, setUserBiodatas] = useState(null)
+
+    const email = user.email
+
+    useEffect(() => {
+        fetch('http://localhost:5000/biodatas')
+            .then(response => response.json())
+            .then(data => {
+                setUserBiodatas(data)
+            })
+    }, [email])
+
+    const userBiodata = userBiodatas && userBiodatas.find(user1 => user1.email === email)
 
     const genderOptions = [
         { value: 'male', label: 'Male' },
@@ -162,7 +175,6 @@ const ViewBiodata = () => {
         { "value": "sylhet", "label": "Sylhet" }
     ]
 
-
     return (
         <div className="ml-5">
             <form className="mt-8 mb-2 max-w-80 m-auto sm:w-96">
@@ -175,7 +187,8 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="gender"
                         size="lg"
-                        value={user.gender}
+                        // defaultChecked={userBiodata.gender}
+                        // value={userBiodata.gender}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -189,7 +202,8 @@ const ViewBiodata = () => {
                         disabled
                         name="name"
                         size="lg"
-                        value={user.displayName}
+                        // defaultValue={userBiodata.name}
+                        // value={userBiodata.name}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -201,7 +215,7 @@ const ViewBiodata = () => {
                     <Input
                         type="url"
                         name="photoURL"
-                        value={user.photoURL}
+                        // value={userBiodata.photoURL}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -215,7 +229,7 @@ const ViewBiodata = () => {
                     <Input
                         type="date"
                         name="birthDate"
-                        value={user.birthDate}
+                        // value={userBiodata.birthDate}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -231,7 +245,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="height"
                         size="lg"
-                        value={user.height}
+                        // value={userBiodata.height}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -245,7 +259,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="weight"
                         size="lg"
-                        value={user.weight}
+                        // value={userBiodata.weight}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -257,7 +271,7 @@ const ViewBiodata = () => {
                     <Input
                         type="number"
                         name="age"
-                        value={user.age}
+                        // value={userBiodata.age}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -273,7 +287,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="occupation"
                         size="lg"
-                        value={user.occupation}
+                        // value={userBiodata.occupation}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -287,7 +301,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="race"
                         size="lg"
-                        value={user.race}
+                        // value={userBiodata.race}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -299,7 +313,7 @@ const ViewBiodata = () => {
                     <Input
                         type="text"
                         name="fatherName"
-                        value={user.fatherName}
+                        // value={userBiodata.fatherName}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -313,7 +327,7 @@ const ViewBiodata = () => {
                     <Input
                         type="text"
                         name="motherName"
-                        value={user.motherName}
+                        // value={userBiodata.motherName}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -329,7 +343,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="permanentDivision"
                         size="lg"
-                        value={user.permanentDivision}
+                        // value={userBiodata.permanentDivision}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -343,7 +357,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="presentDivision"
                         size="lg"
-                        value={user.presentDivision}
+                        // value={userBiodata.presentDivision}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -355,7 +369,7 @@ const ViewBiodata = () => {
                     <Input
                         type="number"
                         name="partnerAge"
-                        value={user.partnerAge}
+                        // value={userBiodata.partnerAge}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -371,7 +385,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="partnerHeight"
                         size="lg"
-                        value={user.partnerHeight}
+                        // value={userBiodata.partnerHeight}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -385,7 +399,7 @@ const ViewBiodata = () => {
                         isDisabled={true}
                         name="partnerWeight"
                         size="lg"
-                        value={user.partnerWeight}
+                        // value={userBiodata.partnerWeight}
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -411,7 +425,7 @@ const ViewBiodata = () => {
                     <Input
                         type="number"
                         name="phoneNumber"
-                        value={user.phoneNumber}
+                        // value={userBiodata.phoneNumber}
                         disabled
                         size="lg"
                         className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
